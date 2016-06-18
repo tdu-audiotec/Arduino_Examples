@@ -6,3 +6,4 @@ cmake
 */cmake
 CMakeLists.txt
 */CMakeLists.txt
+TEST_GPIO/*
