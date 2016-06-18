@@ -44,10 +44,15 @@ echo -e set\(CMAKE\_TOOLCHAIN\_FILE\ \$\{CMAKE\_SOURCE\_DIR\}\/cmake\/ArduinoToo
 echo -e project\ \(Arduino\_Examples\) >> ${CMAKELISTS}
 for project in `echo ${project_list}` 
 do
-	echo -e cmake\_minimum\_required\(VERSION\ 2\.8\.4\) > ${project}/${CMAKELISTS}
-	echo -e set\(CMAKE\_TOOLCHAIN\_FILE\ \$\{CMAKE\_SOURCE\_DIR\}\/\.\.\/cmake\/ArduinoToolchain\.cmake\) >> ${project}/${CMAKELISTS}
+	if [ -e "${project}/cmake" ]; then
+        echo "cmake already exists in ${project}"
+    else
+    	echo "copying cmake to ${project}"
+        cp -R cmake ${project}
+    fi
+    echo -e cmake\_minimum\_required\(VERSION\ 3\.5\) > ${project}/${CMAKELISTS}
+	echo -e set\(CMAKE\_TOOLCHAIN\_FILE\ \$\{CMAKE\_CURRENT\_SOURCE\_DIR\}\/cmake\/ArduinoToolchain\.cmake\) >> ${project}/${CMAKELISTS}
 	echo -e set\(PROJECT\_NAME\ ${project}\) >> ${project}/${CMAKELISTS}
-	echo -e project\(\$\{PROJECT\_NAME\}\) >> ${project}/${CMAKELISTS}
-	echo -e set\(\$\{CMAKE\_PROJECT\_NAME\}\_SKETCH\ \$\{CMAKE\_PROJECT\_NAME\}\.ino\) >> ${project}/${CMAKELISTS}
-	echo -e generate\_arduino\_firmware\(\${CMAKE\_PROJECT\_NAME\}\) >> ${project}/${CMAKELISTS}
+	echo -e set\(\$\{PROJECT\_NAME\}\_SKETCH\ \$\{PROJECT\_NAME\}\.ino\) >> ${project}/${CMAKELISTS}
+	echo -e generate\_arduino\_firmware\(\$\{PROJECT\_NAME\}\) >> ${project}/${CMAKELISTS}
 done
