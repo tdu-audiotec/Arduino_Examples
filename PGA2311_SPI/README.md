@@ -15,6 +15,5 @@ of any kind is done to the author. (Sounds fair, doesn't it?)
 
 Have fun playing it loud!
 
-Written on 18 June 2016 by Tahiro Hashizume
-
+Written on 18 June 2016 by Tahiro Hashizume  
 A proud member of Audio Technology Research Club at Tokyo Denki University.
