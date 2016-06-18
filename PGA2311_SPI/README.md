@@ -12,7 +12,9 @@ The code is based on the one written for AD5206, which is publicly available at:
 https://www.arduino.cc/en/Tutorial/DigitalPotControl (as of 18 June 2016)
 You are free to do whatever you want with this code as long as absolutely no harm
 of any kind is done to the author. (Sounds fair, doesn't it?)
+
 Have fun playing it loud!
 
 Written on 18 June 2016 by Tahiro Hashizume
+
 A proud member of Audio Technology Research Club at Tokyo Denki University.
