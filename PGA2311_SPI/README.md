@@ -1,7 +1,5 @@
 PGA2311_SPI
 ===========
-This directory contains an Arduino sample code for controlling PGA2311 via SPI.
-
 This example controls Texas Instruments PGA2311 Stereo Audio Volume Control.
 The PGA2311 has 2 potentiometer channels and is an SPI-compatible device.
 Controlling it requires that you send a command in the format of two bytes,
