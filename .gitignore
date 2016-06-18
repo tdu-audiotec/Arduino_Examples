@@ -1,0 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+*.bak
+.idea
+cmake
+CMakeLists.txt
