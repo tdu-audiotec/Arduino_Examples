@@ -38,11 +38,15 @@ project_list=`echo ${project_list} | sed -e "s|/||g"`
 
 echo ${project_list}
 
-echo -e cmake\_minimum\_required\(VERSION\ 2\.8\.4\) > ${CMAKELISTS}
-echo -e set\(CMAKE\_TOOLCHAIN\_FILE\ \$\{CMAKE\_SOURCE\_DIR\}\/cmake\/ArduinoToolchain\.cmake\) >> ${CMAKELISTS}
+
+#echo -e cmake\_minimum\_required\(VERSION\ 2\.8\.4\) > ${CMAKELISTS}
+#echo -e project\ \(Arduino\_Examples\) >> ${CMAKELISTS}
 for project in `echo ${project_list}` 
 do
-	echo -e project\(${projcet_name}\) >> ${CMAKELISTS}
-	echo -e set\(\$\{CMAKE\_PROJECT\_NAME\}\_SKETCH\ \$\{CMAKE\_PROJECT\_NAME\}\/\$\{CMAKE\_PROJECT\_NAME\}\.ino\) >> ${CMAKELISTS}
-	echo -e generate\_arduino\_firmware\(\$\{CMAKE\_PROJECT\_NAME\}\) >> ${CMAKELISTS}
+	echo -e cmake\_minimum\_required\(VERSION\ 2\.8\.4\) > ${project}/${CMAKELISTS}
+	echo -e project\(${project}\) >> ${project}/${CMAKELISTS}
+	echo -e set\(CMAKE\_TOOLCHAIN\_FILE\ \$\{CMAKE\_SOURCE\_DIR\}\/\.\.\/cmake\/ArduinoToolchain\.cmake\) >> ${project}/${CMAKELISTS}
+	echo -e set\(\$\{CMAKE\_PROJECT\_NAME\}\_SKETCH\ \$\{CMAKE\_PROJECT\_NAME\}\/\$\{CMAKE\_PROJECT\_NAME\}\.ino\) >> ${project}/${CMAKELISTS}
+	echo -e generate\_arduino\_firmware\(\$\{CMAKE\_PROJECT\_NAME\}\) >> ${project}/${CMAKELISTS}
+	#echo -e add\_subdirectory\ \(${project}\) >> ${CMAKELISTS}
 done
