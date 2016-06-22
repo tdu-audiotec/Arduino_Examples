@@ -15,7 +15,9 @@ if [ ! -z "${projcet_name}" ]; then
 	    echo "Creating "${projcet_name}"..."
 	    MESSAGE="${projcet_name} added."
 	    mkdir ${projcet_name}
-	    touch ${projcet_name}/${projcet_name}.ino
+	    mkdir ${projcet_name}/drafts
+	    mkdir ${projcet_name}/examples
+	    touch ${projcet_name}/examples/${projcet_name}/${projcet_name}.ino
 		eqcount=`seq ${#projcet_name}`
 		echo ${eqcount}
 		for i in `echo ${eqcount}`
