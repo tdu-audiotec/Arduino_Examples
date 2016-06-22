@@ -79,6 +79,7 @@ do
 	fi
 	if [ ! -e "${project}/LICENSE" ]; then
 		touch ${project}/LICENSE
+		cat .devhelper/templates/LICENSE > ${project}/LICENSE
 	fi
 	echo -e set\(PROJECT\_NAME\ ${project}\) >> ${CMAKELISTS}
 	echo -e project\(${project}\) >> ${CMAKELISTS}
