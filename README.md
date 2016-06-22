@@ -14,4 +14,5 @@ Texas Instruments DIR9001
 Updates
 =======
 74HC4053 added.  
+AK449x added.  
 TI_PGA added.  
