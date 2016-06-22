@@ -1,3 +1,3 @@
 TI_PGA
 ======
-This directory contains an Arduino sample code for controlling TI_PGA.
+This directory contains an Arduino Library for controlling Texas Instruments PGA2311/4311 via SPI and GPIO.

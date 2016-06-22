@@ -5,12 +5,6 @@ CMAKELISTS=CMakeLists.txt
 if [ $# -gt 0 ]; then
 	projcet_name=${1}
 fi
-if [ $# -gt 1 ]; then
-	projcet_name=${projcet_name}_${2}
-fi
-if [ $# -gt 2 ]; then
-	projcet_name=${projcet_name}_${3}
-fi
 
 if [ ! -z "${projcet_name}" ]; then
 	if [ -e "${projcet_name}" ]; then
@@ -30,14 +24,14 @@ if [ ! -z "${projcet_name}" ]; then
 		done
 	    echo ${projcet_name} > ${projcet_name}/README.md
 		echo ${eqchain} >> ${projcet_name}/README.md
-		if [ $# -gt 0 ]; then
-		DESC=`echo -e This\ directory\ contains\ an\ Arduino\ sample\ code\ for\ controlling\ ${1}`
-		fi
 		if [ $# -gt 1 ]; then
-		DESC="${DESC}"`echo -e \ via\ ${2}`
+		DESC=`echo -e This\ directory\ contains\ an\ Arduino\ Library\ for\ controlling\ ${2}`
 		fi
 		if [ $# -gt 2 ]; then
-		DESC="${DESC}"`echo -e \ and\ ${3}`
+		DESC="${DESC}"`echo -e \ via\ ${3}`
+		fi
+		if [ $# -gt 3 ]; then
+		DESC="${DESC}"`echo -e \ and\ ${4}`
 		fi
 		echo "${DESC}." >> ${projcet_name}/README.md
 	fi
