@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CMAKELISTS=CMakeLists.txt
+README=README.md
 
 if [ $# -gt 0 ]; then
 	projcet_name=${1}
@@ -10,8 +11,8 @@ if [ ! -z "${projcet_name}" ]; then
 	if [ -e "${projcet_name}" ]; then
 	    echo "Skipping the creation of "${projcet_name}"..."
 	else
-		#echo "  " >> README.md
-		echo "${projcet_name} added.  " >> README.md
+		#echo "  " >> ${README}
+		echo "${projcet_name} added.  " >> ${README}
 	    echo "Creating "${projcet_name}"..."
 	    MESSAGE="${projcet_name} added."
 	    mkdir ${projcet_name}
@@ -24,8 +25,8 @@ if [ ! -z "${projcet_name}" ]; then
 		do
 			eqchain=${eqchain}"="
 		done
-	    echo ${projcet_name} > ${projcet_name}/README.md
-		echo ${eqchain} >> ${projcet_name}/README.md
+	    echo ${projcet_name} > ${projcet_name}/${README}
+		echo ${eqchain} >> ${projcet_name}/${README}
 		if [ $# -gt 1 ]; then
 		DESC=`echo -e This\ directory\ contains\ an\ Arduino\ Library\ for\ controlling\ ${2}`
 		fi
@@ -35,7 +36,7 @@ if [ ! -z "${projcet_name}" ]; then
 		if [ $# -gt 3 ]; then
 		DESC="${DESC}"`echo -e \ and\ ${4}`
 		fi
-		echo "${DESC}." >> ${projcet_name}/README.md
+		echo "${DESC}." >> ${projcet_name}/${README}
 	fi
 fi
 
@@ -62,6 +63,17 @@ echo -e set\(CMAKE\_TOOLCHAIN\_FILE\ \$\{CMAKE\_SOURCE\_DIR\}\/cmake\/ArduinoToo
 echo -e project\ \(Arduino\_Examples\) >> ${CMAKELISTS}
 for project in `echo ${project_list}` 
 do
+	if [ ! -e "${project}/drafts" }; then
+		mkdir ${project}/drafts
+	fi
+	if [ ! -e "${project}/${README}" }; then
+		touch ${project}/${README}
+	fi
+	if [ ! -e "${project}/examples/${project}/${project}.ino" }; then
+		mkdir ${project}/examples
+		mkdir ${project}/examples/${project}
+		touch ${project}/examples/${project}/${project}.ino
+	fi
 	echo -e set\(PROJECT\_NAME\ ${project}\) >> ${CMAKELISTS}
 	echo -e project\(${project}\) >> ${CMAKELISTS}
 	echo -e set\($\{CMAKE\_PROJECT\_NAME\}\_SKETCH\ ${project}\/${project}\.ino\) >> ${CMAKELISTS}
