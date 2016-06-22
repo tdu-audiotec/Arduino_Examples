@@ -5,3 +5,4 @@ with better completeness - either confirmed to work or should work in theory (no
 
 PGA2311_SPI_GPIO added.  
 74HC4053_GPIO added.  
+TI_PGA added.  
