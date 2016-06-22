@@ -78,17 +78,10 @@ do
 		done
 		echo ${projcet_name} > ${temp_readme2}
 		echo ${eqchain} >> ${temp_readme2}
-		DESC=`echo -e This\ directory\ contains\ an\ Arduino\ Library\ for\ controlling\ `
-		if [ ! -z ${DESC2} ]; then
-			DESC=`echo ${DESC}${DESC2}`
+		if [ -e "${project}/library.properties" ]; then
+			CONTENT=`cat ${project}/library.properties|grep sentence|sed -e 's|sentence=||g'`
+			cat .devhelper/templates/README_PROJ.md | sed -e "s|CONTENT|${CONTENT}|g" >> ${temp_readme2}
 		fi
-		if [ ! -z ${DESC3} ]; then
-			DESC="${DESC}"`echo -e \ via\ ${DESC3}`
-		fi
-		if [ ! -z ${DESC4} ]; then
-			DESC="${DESC}"`echo -e \ and\ ${DESC4}`
-		fi
-		echo "${DESC}." >> ${temp_readme2}
 		echo "${temp_readme2}" > ${project}/${README}
 	fi
 	echo "${project} added.  " >> ${temp_readme1}
