@@ -74,6 +74,12 @@ do
 		mkdir ${project}/examples/${project}
 		touch ${project}/examples/${project}/${project}.ino
 	fi
+	if [ ! -e "${project}/library.properties" ]; then
+		touch ${project}/library.properties
+	fi
+	if [ ! -e "${project}/LICENSE" ]; then
+		touch ${project}/LICENSE
+	fi
 	echo -e set\(PROJECT\_NAME\ ${project}\) >> ${CMAKELISTS}
 	echo -e project\(${project}\) >> ${CMAKELISTS}
 	echo -e set\($\{CMAKE\_PROJECT\_NAME\}\_SKETCH\ ${project}\/${project}\.ino\) >> ${CMAKELISTS}
