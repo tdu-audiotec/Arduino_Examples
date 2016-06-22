@@ -69,23 +69,27 @@ do
 		cat .devhelper/templates/LICENSE > ${project}/LICENSE
 	fi		
 	cat .devhelper/templates/CMakeLists_recurse.txt|sed -e "s|ARDUPROJECT|${project}|g" >> ${temp_cmake}
-	
-	if [ ! -e "${project}/${README}" ]; then
-		eqcount=`seq ${#project}`
-		for i in `echo ${eqcount}`
-		do
-			eqchain=${eqchain}"="
-		done
-		echo ${project} > ${temp_readme2}
-		echo ${eqchain} >> ${temp_readme2}
 		if [ -e "${project}/library.properties" ]; then
-			CONTENT=`cat ${project}/library.properties|grep sentence|sed -e 's|sentence=||g'`
-			cat .devhelper/templates/README_PROJ.md | sed -e "s|CONTENT|${CONTENT}|g" >> ${temp_readme2}
-		fi
-		cat "${temp_readme2}" > ${project}/${README}
-		#cat "${temp_readme2}"
-		#echo ""
-	fi
+			eqcount=`seq ${#project}`
+			for i in `echo ${eqcount}`
+			do
+				eqchain=${eqchain}"="
+			done
+			if [ ! -e "${project}/${project}.h" ]; then
+				echo "${project}(Work in progress)" > ${temp_readme2}
+			else
+				echo ${project} > ${temp_readme2}
+			fi
+			echo ${project} > ${temp_readme2}
+			echo ${eqchain} >> ${temp_readme2}
+			
+				CONTENT=`cat ${project}/library.properties|grep sentence|sed -e 's|sentence=||g'`
+				cat .devhelper/templates/README_PROJ.md | sed -e "s|CONTENT|${CONTENT}|g" >> ${temp_readme2}
+			
+			cat "${temp_readme2}" > ${project}/${README}
+			#cat "${temp_readme2}"
+			#echo ""
+		fi	
 	echo "${project} added.  " >> ${temp_readme1}
 	rm ${project}/*.bak
 done
