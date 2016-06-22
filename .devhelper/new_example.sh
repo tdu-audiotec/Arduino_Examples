@@ -76,7 +76,7 @@ do
 				eqchain=${eqchain}"="
 			done
 			if [ ! -e "${project}/${project}.h" ]; then
-				echo "${project}(Work in progress)" > ${temp_readme2}
+				echo ${project}"(Work in progress)" > ${temp_readme2}
 			else
 				echo ${project} > ${temp_readme2}
 			fi
