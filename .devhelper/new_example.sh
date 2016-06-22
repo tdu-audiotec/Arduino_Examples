@@ -70,7 +70,7 @@ do
 	fi		
 	cat .devhelper/templates/CMakeLists_recurse.txt|sed -e "s|ARDUPROJECT|${project}|g" >> ${temp_cmake}
 		if [ -e "${project}/library.properties" ]; then
-			if [ ! -e "${project}/${project}.h" ]; then
+			if [ ! -e "${project}/methods.txt" ]; then
 				tproject=${project}"(Work in progress)"
 			fi
 			eqchain=""
