@@ -82,7 +82,8 @@ do
 			CONTENT=`cat ${project}/library.properties|grep sentence|sed -e 's|sentence=||g'`
 			cat .devhelper/templates/README_PROJ.md | sed -e "s|CONTENT|${CONTENT}|g" >> ${temp_readme2}
 		fi
-		echo "${temp_readme2}" > ${project}/${README}
+		cat "${temp_readme2}" > ${project}/${README}
+		cat "${temp_readme2}"
 	fi
 	echo "${project} added.  " >> ${temp_readme1}
 	rm ${project}/*.bak
