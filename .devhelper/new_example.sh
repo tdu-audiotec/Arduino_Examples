@@ -72,6 +72,8 @@ do
 		if [ -e "${project}/library.properties" ]; then
 			if [ ! -e "${project}/methods.txt" ]; then
 				tproject=${project}"(Work in progress)"
+			else
+				tproject=${project}
 			fi
 			eqchain=""
 			eqcount=`seq ${#tproject}`
