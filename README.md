@@ -1,7 +1,6 @@
 Arduino Examples
 ================
-Unlike other repositories maintained by the members of tdu-audiotec, this repository shall contain a set of decent-quality codes
-with better completeness - either confirmed to work or should work in theory (no syntax errors or build errors under CLion).
+This repository shall contain Arduino Libraries for use with audio-related chips controlled by either SPI or I2S.
   
 Future plans
 ============
