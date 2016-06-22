@@ -84,6 +84,7 @@ do
 		fi
 		cat "${temp_readme2}" > ${project}/${README}
 		cat "${temp_readme2}"
+		echo ""
 	#fi
 	echo "${project} added.  " >> ${temp_readme1}
 	rm ${project}/*.bak
