@@ -71,15 +71,15 @@ do
 	cat .devhelper/templates/CMakeLists_recurse.txt|sed -e "s|ARDUPROJECT|${project}|g" >> ${temp_cmake}
 		if [ -e "${project}/library.properties" ]; then
 			if [ ! -e "${project}/${project}.h" ]; then
-				project_title=${project}"(Work in progress)"
+				tproject=${project}"(Work in progress)"
 			fi
-			eqcount=`seq ${#project_title}`
+			eqcount=`seq ${#tproject}`
 			for i in `echo ${eqcount}`
 			do
 				eqchain=${eqchain}"="
 			done
 			
-			echo ${project_title} > ${temp_readme2}
+			echo ${tproject} > ${temp_readme2}
 			echo ${eqchain} >> ${temp_readme2}
 			
 				CONTENT=`cat ${project}/library.properties|grep sentence|sed -e 's|sentence=||g'`
