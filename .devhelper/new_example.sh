@@ -76,6 +76,7 @@ do
 	fi
 	if [ ! -e "${project}/library.properties" ]; then
 		touch ${project}/library.properties
+		cat .devhelper/templates/library.properties > ${project}/library.properties
 	fi
 	if [ ! -e "${project}/LICENSE" ]; then
 		touch ${project}/LICENSE
