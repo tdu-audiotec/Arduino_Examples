@@ -20,10 +20,16 @@ else
 	done
     echo ${projcet_name} > ${projcet_name}/README.md
 	echo ${eqchain} >> ${projcet_name}/README.md
-	if [ -v "${3}" ]; then
-		and_x = " and "${3}
+	if [ $# -gt 0 ]; then
+	DESC=`echo -e This\ directory\ contains\ an\ Arduino\ sample\ code\ for\ controlling\ ${1}`
 	fi
-	echo -e This\ directory\ contains\ an\ Arduino\ sample\ code\ for\ controlling\ ${1}\ via\ ${2}${and_x}\. >> ${projcet_name}/README.md
+	if [ $# -gt 1 ]; then
+	DESC="${DESC}"`echo -e \ via\ ${2}`
+	fi
+	if [ $# -gt 2 ]; then
+	DESC="${DESC}"`echo -e \ and\ ${3}`
+	fi
+	echo ${DESC} >> ${projcet_name}/README.md
 fi
 
 
