@@ -70,16 +70,15 @@ do
 	fi		
 	cat .devhelper/templates/CMakeLists_recurse.txt|sed -e "s|ARDUPROJECT|${project}|g" >> ${temp_cmake}
 		if [ -e "${project}/library.properties" ]; then
+			if [ ! -e "${project}/${project}.h" ]; then
+				project=${project}"(Work in progress)"
+			fi
 			eqcount=`seq ${#project}`
 			for i in `echo ${eqcount}`
 			do
 				eqchain=${eqchain}"="
 			done
-			if [ ! -e "${project}/${project}.h" ]; then
-				echo ${project}"(Work in progress)" > ${temp_readme2}
-			else
-				echo ${project} > ${temp_readme2}
-			fi
+			
 			echo ${project} > ${temp_readme2}
 			echo ${eqchain} >> ${temp_readme2}
 			
