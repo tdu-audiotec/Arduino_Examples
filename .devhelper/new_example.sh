@@ -29,7 +29,7 @@ else
 	if [ $# -gt 2 ]; then
 	DESC="${DESC}"`echo -e \ and\ ${3}`
 	fi
-	echo ${DESC} >> ${projcet_name}/README.md
+	echo "${DESC}." >> ${projcet_name}/README.md
 fi
 
 
