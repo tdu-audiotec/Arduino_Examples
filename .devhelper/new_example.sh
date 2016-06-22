@@ -70,7 +70,7 @@ do
 	fi		
 	cat .devhelper/templates/CMakeLists_recurse.txt|sed -e "s|ARDUPROJECT|${project}|g" >> ${temp_cmake}
 	
-	#if [ ! -e "${project}/${README}" ]; then
+	if [ ! -e "${project}/${README}" ]; then
 		eqcount=`seq ${#project}`
 		for i in `echo ${eqcount}`
 		do
@@ -83,9 +83,9 @@ do
 			cat .devhelper/templates/README_PROJ.md | sed -e "s|CONTENT|${CONTENT}|g" >> ${temp_readme2}
 		fi
 		cat "${temp_readme2}" > ${project}/${README}
-		cat "${temp_readme2}"
-		echo ""
-	#fi
+		#cat "${temp_readme2}"
+		#echo ""
+	fi
 	echo "${project} added.  " >> ${temp_readme1}
 	rm ${project}/*.bak
 done
