@@ -9,7 +9,7 @@ echo -e \#else >> ${tmp}
 echo -e \#include\ \<WProgram\.h\> >> ${tmp}
 echo -e \#endif\\n >> ${tmp}
 
-cat ${1}.cpp | egrep ^\/\/\}\|^\/\/[A-Z,a-z]+\|^[A-Z,a-z]+ | sed -e "s|^\/\/||g" -e "s|${2}\:\:||g" >> ${tmp}
+cat ${1}.cpp | egrep ^\/\/\#\|^\/\/\}\|^\/\/[A-Z,a-z]+\|^[A-Z,a-z]+ | sed -e "s|^\/\/||g" -e "s|${2}\:\:||g" >> ${tmp}
 
 echo -e \\n\#endif\\n >> ${tmp}
 
