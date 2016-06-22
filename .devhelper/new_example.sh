@@ -73,6 +73,7 @@ do
 			if [ ! -e "${project}/${project}.h" ]; then
 				tproject=${project}"(Work in progress)"
 			fi
+			eqchain=""
 			eqcount=`seq ${#tproject}`
 			for i in `echo ${eqcount}`
 			do
