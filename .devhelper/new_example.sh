@@ -63,13 +63,13 @@ echo -e set\(CMAKE\_TOOLCHAIN\_FILE\ \$\{CMAKE\_SOURCE\_DIR\}\/cmake\/ArduinoToo
 echo -e project\ \(Arduino\_Examples\) >> ${CMAKELISTS}
 for project in `echo ${project_list}` 
 do
-	if [ ! -e "${project}/drafts" }; then
+	if [ ! -e "${project}/drafts" ]; then
 		mkdir ${project}/drafts
 	fi
-	if [ ! -e "${project}/${README}" }; then
+	if [ ! -e "${project}/${README}" ]; then
 		touch ${project}/${README}
 	fi
-	if [ ! -e "${project}/examples/${project}/${project}.ino" }; then
+	if [ ! -e "${project}/examples/${project}/${project}.ino" ]; then
 		mkdir ${project}/examples
 		mkdir ${project}/examples/${project}
 		touch ${project}/examples/${project}/${project}.ino
