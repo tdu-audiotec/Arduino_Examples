@@ -2,41 +2,25 @@
 
 CMAKELISTS=CMakeLists.txt
 README=README.md
+temp_readme1=`mktemp`
+temp_readme2=`mktemp`
+temp_sketch=`mktemp`
+temp_cmake=`mktemp`
+DESC2=${2}
+DESC3=${3}
+DESC4=${4}
+
+
 
 if [ $# -gt 0 ]; then
 	projcet_name=${1}
 fi
 
 if [ ! -z "${projcet_name}" ]; then
-	if [ -e "${projcet_name}" ]; then
-	    echo "Skipping the creation of "${projcet_name}"..."
-	else
-		#echo "  " >> ${README}
-		echo "${projcet_name} added.  " >> ${README}
+	if [ ! -e "${projcet_name}" ]; then
 	    echo "Creating "${projcet_name}"..."
-	    MESSAGE="${projcet_name} added."
 	    mkdir ${projcet_name}
-	    mkdir ${projcet_name}/drafts
-	    mkdir ${projcet_name}/examples
-	    touch ${projcet_name}/examples/${projcet_name}/${projcet_name}.ino
-		eqcount=`seq ${#projcet_name}`
-		echo ${eqcount}
-		for i in `echo ${eqcount}`
-		do
-			eqchain=${eqchain}"="
-		done
-	    echo ${projcet_name} > ${projcet_name}/${README}
-		echo ${eqchain} >> ${projcet_name}/${README}
-		if [ $# -gt 1 ]; then
-		DESC=`echo -e This\ directory\ contains\ an\ Arduino\ Library\ for\ controlling\ ${2}`
-		fi
-		if [ $# -gt 2 ]; then
-		DESC="${DESC}"`echo -e \ via\ ${3}`
-		fi
-		if [ $# -gt 3 ]; then
-		DESC="${DESC}"`echo -e \ and\ ${4}`
-		fi
-		echo "${DESC}." >> ${projcet_name}/${README}
+	    MESSAGE="${projcet_name} added."
 	fi
 fi
 
@@ -48,45 +32,72 @@ done
 ignore_list=`echo ${ignore_list} | sed -e 's/^\\\|//g'`
 ignore_list=\'${ignore_list}\'
 
-ls -F1 | grep /
+
 for project in `ls -F1 | grep /`
 do
     project_list="${project_list} "`echo ${project} | grep -v ${ignore_list}`
 done
-
 project_list=`echo ${project_list} | sed -e "s|/||g"`
 
-echo ${project_list}
+cat .devhelper/templates/CMakeLists_header.txt > ${temp_cmake}
+cat .devhelper/templates/README_REPO.md > ${temp_readme1}
 
-echo -e cmake\_minimum\_required\(VERSION\ 2\.8\.4\) > ${CMAKELISTS}
-echo -e set\(CMAKE\_TOOLCHAIN\_FILE\ \$\{CMAKE\_SOURCE\_DIR\}\/cmake\/ArduinoToolchain\.cmake\) >> ${CMAKELISTS}
-echo -e project\ \(Arduino\_Examples\) >> ${CMAKELISTS}
 for project in `echo ${project_list}` 
 do
-	if [ ! -e "${project}/drafts" ]; then
-		mkdir ${project}/drafts
-	fi
+	if [ ! -e "${project}" ]; then
+		mkdir ${project} 
+	fi  
 	if [ ! -e "${project}/${README}" ]; then
-		touch ${project}/${README}
-	fi
+		touch ${project}/${README} 
+	fi  
+	if [ ! -e "${project}/drafts" ]; then
+		mkdir ${project}/drafts 
+	fi  
+	if [ ! -e "${project}/examples" ]; then
+		mkdir ${project}/examples 
+	fi  
+	if [ ! -e "${project}/examples/${project}" ]; then
+		mkdir ${project}/examples/${project} 
+	fi  
 	if [ ! -e "${project}/examples/${project}/${project}.ino" ]; then
-		mkdir ${project}/examples
-		mkdir ${project}/examples/${project}
-		touch ${project}/examples/${project}/${project}.ino
-	fi
+		touch ${project}/examples/${project}/${project}.ino 
+	fi  
 	if [ ! -e "${project}/library.properties" ]; then
-		touch ${project}/library.properties
-		cat .devhelper/templates/library.properties > ${project}/library.properties
-	fi
+		cat .devhelper/templates/library.properties|sed -e "s|ARDUPROJECT|${project}|g" > ${project}/library.properties
+	fi  
 	if [ ! -e "${project}/LICENSE" ]; then
-		touch ${project}/LICENSE
 		cat .devhelper/templates/LICENSE > ${project}/LICENSE
+	fi		
+	cat .devhelper/templates/CMakeLists_recurse.txt|sed -e "s|ARDUPROJECT|${project}|g" >> ${temp_cmake}
+	
+	if [ ! -e "${project}/${README}" ]; then
+		eqcount=`seq ${#projcet}`
+		for i in `echo ${eqcount}`
+		do
+			eqchain=${eqchain}"="
+		done
+		echo ${projcet_name} > ${temp_readme2}
+		echo ${eqchain} >> ${temp_readme2}
+		DESC=`echo -e This\ directory\ contains\ an\ Arduino\ Library\ for\ controlling\ `
+		if [ ! -z ${DESC2} ]; then
+			DESC=`echo ${DESC}${DESC2}`
+		fi
+		if [ ! -z ${DESC3} ]; then
+			DESC="${DESC}"`echo -e \ via\ ${DESC3}`
+		fi
+		if [ ! -z ${DESC4} ]; then
+			DESC="${DESC}"`echo -e \ and\ ${DESC4}`
+		fi
+		echo "${DESC}." >> ${temp_readme2}
+		echo "${temp_readme2}" > ${project}/${README}
 	fi
-	echo -e set\(PROJECT\_NAME\ ${project}\) >> ${CMAKELISTS}
-	echo -e project\(${project}\) >> ${CMAKELISTS}
-	echo -e set\($\{CMAKE\_PROJECT\_NAME\}\_SKETCH\ ${project}\/${project}\.ino\) >> ${CMAKELISTS}
-	echo -e generate\_arduino\_firmware\($\{CMAKE\_PROJECT\_NAME\}\) >> ${CMAKELISTS}
+	echo "${project} added.  " >> ${temp_readme1}
+	rm ${project}/*.bak
 done
+
+
+cat ${temp_readme1} > ${README}
+cat ${temp_cmake} > ${CMAKELISTS}
 
 if [ -v "${MESSAGE}" ]; then
 	MESSAGE=${MESSAGE}
@@ -96,3 +107,4 @@ fi
 
 git add --all .
 git commit -m ${MESSAGE}
+git push

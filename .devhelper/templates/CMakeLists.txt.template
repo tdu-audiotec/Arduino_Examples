@@ -1,5 +1,0 @@
-cmake_minimum_required(VERSION 3.5)
-set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/ArduinoToolchain.cmake)
-set(PROJECT_NAME PGA2311_SPI)
-set(${PROJECT_NAME}_SKETCH ${PROJECT_NAME}.ino)
-generate_arduino_firmware(${PROJECT_NAME})

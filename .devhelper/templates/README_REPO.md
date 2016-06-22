@@ -13,5 +13,3 @@ Texas Instruments DIR9001
   
 Updates
 =======
-74HC4053 added.  
-TI_PGA added.  
