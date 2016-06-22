@@ -16,7 +16,8 @@ if [ ! -z "${projcet_name}" ]; then
 	if [ -e "${projcet_name}" ]; then
 	    echo "Skipping the creation of "${projcet_name}"..."
 	else
-		echo "Add request for ${projcet_name}"
+		echo "  " >> README.md
+		echo "${projcet_name} added." >> README.md
 	    echo "Creating "${projcet_name}"..."
 	    MESSAGE="${projcet_name} added."
 	    mkdir ${projcet_name}
