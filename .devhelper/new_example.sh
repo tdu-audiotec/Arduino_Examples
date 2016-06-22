@@ -2,12 +2,14 @@
 
 CMAKELISTS=CMakeLists.txt
 
-projcet_name=${1}_${2}
+projcet_name=${1}_${2}_${3}
 
 if [ -e "${projcet_name}" ]; then
     echo "Skipping the creation of "${projcet_name}"..."
 else
+	echo "Add request for ${projcet_name}"
     echo "Creating "${projcet_name}"..."
+    MESSAGE="${projcet_name} added."
     mkdir ${projcet_name}
     touch ${projcet_name}/${projcet_name}.ino
 	eqcount=`seq ${#projcet_name}`
@@ -18,7 +20,10 @@ else
 	done
     echo ${projcet_name} > ${projcet_name}/README.md
 	echo ${eqchain} >> ${projcet_name}/README.md
-	echo -e This\ directory\ contains\ an\ Arduino\ sample\ code\ for\ controlling\ ${1}\ via ${2}. >> ${projcet_name}/README.md
+	if [ -v "${3}" ]; then
+		and_x = " and "${3}
+	fi
+	echo -e This\ directory\ contains\ an\ Arduino\ sample\ code\ for\ controlling\ ${1}\ via\ ${2}${and_x}\. >> ${projcet_name}/README.md
 fi
 
 
@@ -29,30 +34,32 @@ done
 ignore_list=`echo ${ignore_list} | sed -e 's/^\\\|//g'`
 ignore_list=\'${ignore_list}\'
 
+ls -F1 | grep /
 for project in `ls -F1 | grep /`
 do
-    project_list=${project_list}" "`echo ${project} | grep -v ${ignore_list}`
+    project_list="${project_list} "`echo ${project} | grep -v ${ignore_list}`
 done
 
 project_list=`echo ${project_list} | sed -e "s|/||g"`
 
 echo ${project_list}
 
-
 echo -e cmake\_minimum\_required\(VERSION\ 2\.8\.4\) > ${CMAKELISTS}
 echo -e set\(CMAKE\_TOOLCHAIN\_FILE\ \$\{CMAKE\_SOURCE\_DIR\}\/cmake\/ArduinoToolchain\.cmake\) >> ${CMAKELISTS}
 echo -e project\ \(Arduino\_Examples\) >> ${CMAKELISTS}
 for project in `echo ${project_list}` 
 do
-	if [ -e "${project}/cmake" ]; then
-        echo "cmake already exists in ${project}"
-    else
-    	echo "copying cmake to ${project}"
-        cp -R cmake ${project}
-    fi
-    echo -e cmake\_minimum\_required\(VERSION\ 3\.5\) > ${project}/${CMAKELISTS}
-	echo -e set\(CMAKE\_TOOLCHAIN\_FILE\ \$\{CMAKE\_CURRENT\_SOURCE\_DIR\}\/cmake\/ArduinoToolchain\.cmake\) >> ${project}/${CMAKELISTS}
-	echo -e set\(PROJECT\_NAME\ ${project}\) >> ${project}/${CMAKELISTS}
-	echo -e set\(\$\{PROJECT\_NAME\}\_SKETCH\ \$\{PROJECT\_NAME\}\.ino\) >> ${project}/${CMAKELISTS}
-	echo -e generate\_arduino\_firmware\(\$\{PROJECT\_NAME\}\) >> ${project}/${CMAKELISTS}
+	echo -e set\(PROJECT\_NAME\ ${project}\) >> ${CMAKELISTS}
+	echo -e project\(${project}\) >> ${CMAKELISTS}
+	echo -e set\($\{CMAKE\_PROJECT\_NAME\}\_SKETCH\ ${project}\/${project}\.ino\) >> ${CMAKELISTS}
+	echo -e generate\_arduino\_firmware\($\{CMAKE\_PROJECT\_NAME\}\) >> ${CMAKELISTS}
 done
+
+if [ -v "${MESSAGE}" ]; then
+	MESSAGE=${MESSAGE}
+else
+	MESSAGE="Progress"
+fi
+
+git add --all .
+git commit -m ${MESSAGE}
