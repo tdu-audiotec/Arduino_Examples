@@ -76,7 +76,7 @@ do
 		do
 			eqchain=${eqchain}"="
 		done
-		echo ${projcet_name} > ${temp_readme2}
+		echo ${project} > ${temp_readme2}
 		echo ${eqchain} >> ${temp_readme2}
 		if [ -e "${project}/library.properties" ]; then
 			CONTENT=`cat ${project}/library.properties|grep sentence|sed -e 's|sentence=||g'`
