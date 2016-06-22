@@ -2,34 +2,44 @@
 
 CMAKELISTS=CMakeLists.txt
 
-projcet_name=${1}_${2}_${3}
+if [ $# -gt 0 ]; then
+	projcet_name=${1}
+fi
+if [ $# -gt 1 ]; then
+	projcet_name=${projcet_name}_${2}
+fi
+if [ $# -gt 2 ]; then
+	projcet_name=${projcet_name}_${3}
+fi
 
-if [ -e "${projcet_name}" ]; then
-    echo "Skipping the creation of "${projcet_name}"..."
-else
-	echo "Add request for ${projcet_name}"
-    echo "Creating "${projcet_name}"..."
-    MESSAGE="${projcet_name} added."
-    mkdir ${projcet_name}
-    touch ${projcet_name}/${projcet_name}.ino
-	eqcount=`seq ${#projcet_name}`
-	echo ${eqcount}
-	for i in `echo ${eqcount}`
-	do
-		eqchain=${eqchain}"="
-	done
-    echo ${projcet_name} > ${projcet_name}/README.md
-	echo ${eqchain} >> ${projcet_name}/README.md
-	if [ $# -gt 0 ]; then
-	DESC=`echo -e This\ directory\ contains\ an\ Arduino\ sample\ code\ for\ controlling\ ${1}`
+if [ ! -z "${projcet_name}" ]; then
+	if [ -e "${projcet_name}" ]; then
+	    echo "Skipping the creation of "${projcet_name}"..."
+	else
+		echo "Add request for ${projcet_name}"
+	    echo "Creating "${projcet_name}"..."
+	    MESSAGE="${projcet_name} added."
+	    mkdir ${projcet_name}
+	    touch ${projcet_name}/${projcet_name}.ino
+		eqcount=`seq ${#projcet_name}`
+		echo ${eqcount}
+		for i in `echo ${eqcount}`
+		do
+			eqchain=${eqchain}"="
+		done
+	    echo ${projcet_name} > ${projcet_name}/README.md
+		echo ${eqchain} >> ${projcet_name}/README.md
+		if [ $# -gt 0 ]; then
+		DESC=`echo -e This\ directory\ contains\ an\ Arduino\ sample\ code\ for\ controlling\ ${1}`
+		fi
+		if [ $# -gt 1 ]; then
+		DESC="${DESC}"`echo -e \ via\ ${2}`
+		fi
+		if [ $# -gt 2 ]; then
+		DESC="${DESC}"`echo -e \ and\ ${3}`
+		fi
+		echo "${DESC}." >> ${projcet_name}/README.md
 	fi
-	if [ $# -gt 1 ]; then
-	DESC="${DESC}"`echo -e \ via\ ${2}`
-	fi
-	if [ $# -gt 2 ]; then
-	DESC="${DESC}"`echo -e \ and\ ${3}`
-	fi
-	echo "${DESC}." >> ${projcet_name}/README.md
 fi
 
 
