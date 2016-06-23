@@ -57,7 +57,7 @@ void TI_PGA::write(uint8_t value[]) {
     if (value_changed) {
         noInterrupts();
         digitalWrite(_pin_cs, LOW);
-        if (SPItransfer(value, _pgaSpi)) {
+        if (TI_PGAtransfer(value, _pgaSpi)) {
             digitalWrite(_pin_cs, HIGH);
             interrupts();
             for (uint8_t i = 0; i < ch_total; i++) {
@@ -80,7 +80,7 @@ void TI_PGA::status(void) {
 
 
 
-boolean TI_PGA::SPItransfer(uint8_t data[], boolean spi_mode) {
+boolean TI_PGA::TI_PGAtransfer(uint8_t data[], boolean spi_mode) {
     boolean success = false;
     uint8_t ch_order;
     uint8_t ch_total = sizeof(data)/ sizeof(data[0]);
