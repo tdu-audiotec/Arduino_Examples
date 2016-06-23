@@ -383,7 +383,7 @@ void AK449x::setinit(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum) {
         SPI_exec=true;
     }
     for (uint8_t i=0;i<REGNUM;i++) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, i);
+        spi_write(ChipSelect, ChipNum, i);
         AK449x::queued[ChipSelect][ChipNum][i] = false;
     }
 }
@@ -395,49 +395,49 @@ void AK449x::setinit(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum) {
 ////|_|_|x|_|_|_|_|_| External digital filter clock: 768KHz/384KHz
 ////|_|x|_|_|_|_|_|_| Enable/disable external digital filter mode
 ////|x|_|_|_|_|_|_|_| Master Clock frequency Setting: auto/manual (2)(3)
-void AK449x::RSTN(uint8_t ChipSelect, uint8_t ChipNum) {
+void AK449x::retn(uint8_t ChipSelect, uint8_t ChipNum) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_00RSTN, BIT_HIGH);
-    AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+    spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_00RSTN, BIT_LOW);
-    AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+    spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
 }
 
-void AK449x::DIF(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
+void AK449x::dif(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_01DIF0, bitRead(OpMode, 0));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_02DIF1, bitRead(OpMode, 1));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_03DIF2, bitRead(OpMode, 2));
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = true;
     }
 }
 
-void AK449x::ECS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::ecs(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_05ECS, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = true;
     }
 }
 
-void AK449x::EXDF(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::exdf(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_06EXDF, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = true;
     }
 }
 
-void AK449x::ACKS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::acks(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_07ACKS, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = true;
@@ -452,45 +452,45 @@ void AK449x::ACKS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boole
 ////|_|_|x|_|_|_|_|_| Short Delay/Traditional filter (Minimum/Linear phase)
 ////|_|x|_|_|_|_|_|_| Zero data detect mode: Separate channels or ANDed channels
 ////|x|_|_|_|_|_|_|_| Zero data detect ON/OFF
-void AK449x::SMUTE(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::smute(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_10SMUTE, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = true;
     }
 }
 
-void AK449x::DEM(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
+void AK449x::dem(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_11DEM0, bitRead(OpMode, 0));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_12DEM1, bitRead(OpMode, 1));
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = true;
     }
 }
 
-void AK449x::DFS(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
+void AK449x::dfs(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_13DFS0, bitRead(OpMode, 0));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_14DFS1, bitRead(OpMode, 1));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_51DFS2, bitRead(OpMode, 2));
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = true;
     }
 }
 
-void AK449x::SD(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
+void AK449x::sd(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_15SD, bitRead(OpMode, 1));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_50SSLOW, bitRead(OpMode, 0));
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
     } else if (!SendNow) {
@@ -499,20 +499,20 @@ void AK449x::SD(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean Sen
     }
 }
 
-void AK449x::DZFM(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::dzfm(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_16DZFM, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = true;
     }
 }
 
-void AK449x::DZFE(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::dzfe(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_17DZFE, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = true;
@@ -528,50 +528,50 @@ void AK449x::DZFE(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boole
 ////|_|_|_|x|_|_|_|_| DSD Data on clock falling/rising edge
 ////|_|x|_|_|_|_|_|_| DSD master clock frequency:512KHz/768KHz
 ////|x|_|_|_|_|_|_|_| PCM/DSD mode
-void AK449x::SELLR(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::sellr(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_21SELLR, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
     }
 }
 
-void AK449x::DZFB(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::dzfb(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_22DZFB, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
     }
 }
 
-void AK449x::MONO(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::mono(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_23MONO, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
     }
 }
 
-void AK449x::DCKB(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::dckb(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_24DCKB, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
     }
 }
 
-void AK449x::DCKS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::dcks(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_25DCKS, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
@@ -581,7 +581,7 @@ void AK449x::DCKS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boole
 void AK449x::DP(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_27DP, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
@@ -591,7 +591,7 @@ void AK449x::DP(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean
 ////Register address: 03 (Left Channel Attenuation)
 ////7 6 5 4 3 2 1 0
 ////|x|x|x|x|x|x|x|x| Attenuation (1)
-void AK449x::LATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
+void AK449x::latt(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_30LATT0, bitRead(OpMode, 0));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_31LATT1, bitRead(OpMode, 1));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_32LATT2, bitRead(OpMode, 2));
@@ -601,7 +601,7 @@ void AK449x::LATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean S
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_36LATT6, bitRead(OpMode, 6));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_37LATT7, bitRead(OpMode, 7));
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_LATT);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_LATT);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_LATT] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_LATT] = true;
@@ -611,7 +611,7 @@ void AK449x::LATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean S
 ////Register address: 04 (Right Channel Attenuation)
 ////7 6 5 4 3 2 1 0
 ////|x|x|x|x|x|x|x|x| Attenuation (1)
-void AK449x::RATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
+void AK449x::ratt(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_40RATT0, bitRead(OpMode, 0));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_41RATT1, bitRead(OpMode, 1));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_42RATT2, bitRead(OpMode, 2));
@@ -621,7 +621,7 @@ void AK449x::RATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean S
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_46RATT6, bitRead(OpMode, 6));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_47RATT7, bitRead(OpMode, 7));
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_RATT);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_RATT);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_RATT] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_RATT] = true;
@@ -634,30 +634,30 @@ void AK449x::RATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean S
 ////|_|_|_|_|_|_|x|_| Bit 3 of the manual sampling speed setting (see reg 01)
 ////|_|x|_|_|_|_|_|_| Left channel phase invert ON/OFF
 ////|x|_|_|_|_|_|_|_| Right channel phase invert ON/OFF
-void AK449x::SSLOW(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::sslow(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_50SSLOW, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = true;
     }
 }
 
-void AK449x::INVR(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::invr(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_56INVR, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = true;
     }
 }
 
-void AK449x::INVL(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::invl(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_57INVL, FuncEnable);
     if (SendNow) {
-        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
+        spi_write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = false;
     } else if (!SendNow) {
         AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = true;
@@ -673,13 +673,13 @@ void AK449x::INVL(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boole
 ////|_|_|x|_|_|_|_|_| Right Channel DSD flag when detecting full scale signal
 ////|_|x|_|_|_|_|_|_| Left Channel DSD flag when detecting full scale signal
 ////|x|_|_|_|_|_|_|_| DSD AutoMute: ON/OFF (4)
-void AK449x::DSDSEL(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode, boolean SendNow) {
+void AK449x::dsdsel(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_60DSDSEL0, bitRead(OpMode, 0));
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_90DSDSEL1, bitRead(OpMode, 1));
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL8);
+            spi_write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA90_REG_CTRL8);
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL8] = false;
         } else if (!SendNow) {
@@ -689,7 +689,7 @@ void AK449x::DSDSEL(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t O
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_60DSDDSEL, bitRead(OpMode, 0));
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
@@ -697,11 +697,11 @@ void AK449x::DSDSEL(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t O
     }
 }
 
-void AK449x::DSDD(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode, boolean SendNow) {
+void AK449x::dsdd(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_61DSDD, bitRead(OpMode, 0));
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
@@ -710,7 +710,7 @@ void AK449x::DSDD(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpM
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_61DSDD0, bitRead(OpMode, 0));
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_62DSDD1, bitRead(OpMode, 1));
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
@@ -718,11 +718,11 @@ void AK449x::DSDD(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpM
     }
 }
 
-void AK449x::DMRE(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::dmre(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_63DMRE, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
@@ -730,7 +730,7 @@ void AK449x::DMRE(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Fun
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_63DMRE, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
@@ -738,11 +738,11 @@ void AK449x::DMRE(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Fun
     }
 }
 
-void AK449x::DMC(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::dmc(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_64DMC, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
@@ -750,7 +750,7 @@ void AK449x::DMC(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Func
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_64DMC, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
@@ -758,11 +758,11 @@ void AK449x::DMC(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Func
     }
 }
 
-void AK449x::DMR(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::dmr(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_65DMR, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
@@ -770,7 +770,7 @@ void AK449x::DMR(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Func
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_65DMR, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
@@ -778,11 +778,11 @@ void AK449x::DMR(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Func
     }
 }
 
-void AK449x::DML(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::dml(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_66DML, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
@@ -790,7 +790,7 @@ void AK449x::DML(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Func
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_66DML, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
@@ -798,11 +798,11 @@ void AK449x::DML(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Func
     }
 }
 
-void AK449x::DDM(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::ddm(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_67DDM, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
@@ -810,7 +810,7 @@ void AK449x::DDM(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Func
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_67DDM, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            spi_write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
@@ -821,11 +821,11 @@ void AK449x::DDM(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Func
 ////Register address: 07 (Control 6)
 ////7 6 5 4 3 2 1 0
 ////|_|_|_|_|_|_|_|x| Synchronize ON/OFF (1)
-void AK449x::SYNCE(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::synce(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_70SYNCE, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL6);
+            spi_write(ChipSelect, ChipNum, VERITA90_REG_CTRL6);
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL6] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL6] = true;
@@ -833,7 +833,7 @@ void AK449x::SYNCE(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Fu
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA95_70SYNCE, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL6);
+            spi_write(ChipSelect, ChipNum, VERITA95_REG_CTRL6);
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL6] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL6] = true;
@@ -844,12 +844,12 @@ void AK449x::SYNCE(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Fu
 ////Register address: 08 (Control 7)
 ////7 6 5 4 3 2 1 0
 ////|_|_|_|_|_|_|x|x| Sound Quality Control Setting (1)
-void AK449x::SC(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode, boolean SendNow) {
+void AK449x::sc(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_80SC0, bitRead(OpMode, 0));
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_81SC1, bitRead(OpMode, 1));
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL7);
+            spi_write(ChipSelect, ChipNum, VERITA90_REG_CTRL7);
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL7] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL7] = true;
@@ -859,7 +859,7 @@ void AK449x::SC(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMod
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_81SC1, bitRead(OpMode, 1));
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_82SC2, bitRead(OpMode, 2));
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL7);
+            spi_write(ChipSelect, ChipNum, VERITA95_REG_CTRL7);
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL7] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL7] = true;
@@ -871,11 +871,11 @@ void AK449x::SC(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMod
 ////7 6 5 4 3 2 1 0
 ////|_|_|_|_|_|_|_|x| DSD bit 1 of sample speed selection (see also reg 5)
 ////|_|_|_|_|_|_|x|_| DSD filter selection when in DSD direct mode
-void AK449x::DSDF(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
+void AK449x::dsdf(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_91DSDF, FuncEnable);
         if (SendNow) {
-            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL8);
+            spi_write(ChipSelect, ChipNum, VERITA90_REG_CTRL8);
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL8] = false;
         } else if (!SendNow) {
             AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL8] = true;
@@ -892,7 +892,7 @@ void AK449x::DSDF(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean Fun
     boolean AK449x::SPI_exec;
     boolean AK449x::queued[CSELECT_MAX][CHIPNUM_MAX][REGNUM];
     uint8_t AK449x::reg449x[CSELECT_MAX][CHIPNUM_MAX][REGNUM];
-void AK449x::AK449x_SPI_Write(uint8_t ChipSelect, uint8_t ChipNum, uint8_t RegisterAddress) {
+void AK449x::spi_write(uint8_t ChipSelect, uint8_t ChipNum, uint8_t RegisterAddress) {
 // AK449x DACs expect the register address in the upper 2 bits of the byte as Chip-Address. So shift the bits left by 6 bits:
     byte ChipNumByte = (byte) ChipNum << 6;
 // AK449x DACs expect the register address in the upper 1 bits of the byte as Read/Write. So shift the bits left by 7 bits:
