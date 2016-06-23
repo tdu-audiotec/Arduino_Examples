@@ -256,125 +256,135 @@
 //#define VERITA95_97RSVD 7 //09H, 7
 //#define VERITA95_97RSVD_init BIT_LOW //09H, 7, LOW
 
-
-
-
 //class AK449x{
 //public:
 void AK449x::setinit(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum) {
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_00RSTN, VERITA9x_00RSTN_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_01DIF0, VERITA9x_01DIF0_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_02DIF1, VERITA9x_02DIF1_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_03DIF2, VERITA9x_03DIF2_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_04RSVD, VERITA9x_04RSVD_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_05ECS, VERITA9x_05ECS_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_06EXDF, VERITA9x_06EXDF_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_07ACKS, VERITA9x_07ACKS_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_10SMUTE, VERITA9x_10SMUTE_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_11DEM0, VERITA9x_11DEM0_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_12DEM1, VERITA9x_12DEM1_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_13DFS0, VERITA9x_13DFS0_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_14DFS1, VERITA9x_14DFS1_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_15SD, VERITA9x_15SD_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_16DZFM, VERITA9x_16DZFM_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_17DZFE, VERITA9x_17DZFE_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_21SELLR, VERITA9x_21SELLR_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_22DZFB, VERITA9x_22DZFB_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_23MONO, VERITA9x_23MONO_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_24DCKB, VERITA9x_24DCKB_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_25DCKS, VERITA9x_25DCKS_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_26RSVD, VERITA9x_26RSVD_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_27DP, VERITA9x_27DP_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_50SSLOW, VERITA9x_50SSLOW_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_51DFS2, VERITA9x_51DFS2_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_52RSVD, VERITA9x_52RSVD_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_53RSVD, VERITA9x_53RSVD_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_54RSVD, VERITA9x_54RSVD_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_55RSVD, VERITA9x_55RSVD_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_56INVR, VERITA9x_56INVR_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_57INVL, VERITA9x_57INVL_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_30LATT0, VERITA9x_30LATT0_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_31LATT1, VERITA9x_31LATT1_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_32LATT2, VERITA9x_32LATT2_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_33LATT3, VERITA9x_33LATT3_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_34LATT4, VERITA9x_34LATT4_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_35LATT5, VERITA9x_35LATT5_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_36LATT6, VERITA9x_36LATT6_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_37LATT7, VERITA9x_37LATT7_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_40RATT0, VERITA9x_40RATT0_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_41RATT1, VERITA9x_41RATT1_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_42RATT2, VERITA9x_42RATT2_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_43RATT3, VERITA9x_43RATT3_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_44RATT4, VERITA9x_44RATT4_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_45RATT5, VERITA9x_45RATT5_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_46RATT6, VERITA9x_46RATT6_init);
-    bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_47RATT7, VERITA9x_47RATT7_init);
-    if (ModelNum == 4490) {
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_60DSDSEL0, VERITA90_60DSDSEL0_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_61DSDD, VERITA90_61DSDD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_62RSVD, VERITA90_62RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_63DMRE, VERITA90_63DMRE_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_64DMC, VERITA90_64DMC_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_65DMR, VERITA90_65DMR_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_66DML, VERITA90_66DML_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_67DDM, VERITA90_67DDM_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_70SYNCE, VERITA90_70SYNCE_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_71RSVD, VERITA90_71RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_72RSVD, VERITA90_72RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_73RSVD, VERITA90_73RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_74RSVD, VERITA90_74RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_75RSVD, VERITA90_75RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_76RSVD, VERITA90_76RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_77RSVD, VERITA90_77RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_80SC0, VERITA90_80SC0_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_81SC1, VERITA90_81SC1_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_82RSVD, VERITA90_82RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_83RSVD, VERITA90_83RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_84RSVD, VERITA90_84RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_85RSVD, VERITA90_85RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_86RSVD, VERITA90_86RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_87RSVD, VERITA90_87RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_90DSDSEL1, VERITA90_90DSDSEL1_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_91DSDF, VERITA90_91DSDF_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_92RSVD, VERITA90_92RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_93RSVD, VERITA90_93RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_94RSVD, VERITA90_94RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_95RSVD, VERITA90_95RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_96RSVD, VERITA90_96RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_97RSVD, VERITA90_97RSVD_init);
-    } else if (ModelNum == 4495) {
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_60DSDDSEL, VERITA95_60DSDDSEL_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_61DSDD0, VERITA95_61DSDD0_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_62DSDD1, VERITA95_62DSDD1_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_63DMRE, VERITA95_63DMRE_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_64DMC, VERITA95_64DMC_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_65DMR, VERITA95_65DMR_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_66DML, VERITA95_66DML_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_67DDM, VERITA95_67DDM_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_70SYNCE, VERITA95_70SYNCE_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_71RSVD, VERITA95_71RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_72RSVD, VERITA95_72RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_73RSVD, VERITA95_73RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_74RSVD, VERITA95_74RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_75RSVD, VERITA95_75RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_76RSVD, VERITA95_76RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_77RSVD, VERITA95_77RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_80SC0, VERITA95_80SC0_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_81SC1, VERITA95_81SC1_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_82SC2, VERITA95_82SC2_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_83RSVD, VERITA95_83RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_84RSVD, VERITA95_84RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_85RSVD, VERITA95_85RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_86RSVD, VERITA95_86RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_87RSVD, VERITA95_87RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_90DSDSEL1, VERITA95_90DSDSEL1_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_91DSDF, VERITA95_91DSDF_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_92RSVD, VERITA95_92RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_93RSVD, VERITA95_93RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_94RSVD, VERITA95_94RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_95RSVD, VERITA95_95RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_96RSVD, VERITA95_96RSVD_init);
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_97RSVD, VERITA95_97RSVD_init);
+    if(!Initialized[ChipSelect][ChipNum]){
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_00RSTN, VERITA9x_00RSTN_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_01DIF0, VERITA9x_01DIF0_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_02DIF1, VERITA9x_02DIF1_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_03DIF2, VERITA9x_03DIF2_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_04RSVD, VERITA9x_04RSVD_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_05ECS, VERITA9x_05ECS_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_06EXDF, VERITA9x_06EXDF_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_07ACKS, VERITA9x_07ACKS_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_10SMUTE, VERITA9x_10SMUTE_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_11DEM0, VERITA9x_11DEM0_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_12DEM1, VERITA9x_12DEM1_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_13DFS0, VERITA9x_13DFS0_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_14DFS1, VERITA9x_14DFS1_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_15SD, VERITA9x_15SD_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_16DZFM, VERITA9x_16DZFM_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_17DZFE, VERITA9x_17DZFE_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_21SELLR, VERITA9x_21SELLR_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_22DZFB, VERITA9x_22DZFB_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_23MONO, VERITA9x_23MONO_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_24DCKB, VERITA9x_24DCKB_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_25DCKS, VERITA9x_25DCKS_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_26RSVD, VERITA9x_26RSVD_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_27DP, VERITA9x_27DP_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_50SSLOW, VERITA9x_50SSLOW_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_51DFS2, VERITA9x_51DFS2_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_52RSVD, VERITA9x_52RSVD_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_53RSVD, VERITA9x_53RSVD_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_54RSVD, VERITA9x_54RSVD_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_55RSVD, VERITA9x_55RSVD_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_56INVR, VERITA9x_56INVR_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_57INVL, VERITA9x_57INVL_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_30LATT0, VERITA9x_30LATT0_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_31LATT1, VERITA9x_31LATT1_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_32LATT2, VERITA9x_32LATT2_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_33LATT3, VERITA9x_33LATT3_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_34LATT4, VERITA9x_34LATT4_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_35LATT5, VERITA9x_35LATT5_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_36LATT6, VERITA9x_36LATT6_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_37LATT7, VERITA9x_37LATT7_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_40RATT0, VERITA9x_40RATT0_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_41RATT1, VERITA9x_41RATT1_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_42RATT2, VERITA9x_42RATT2_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_43RATT3, VERITA9x_43RATT3_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_44RATT4, VERITA9x_44RATT4_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_45RATT5, VERITA9x_45RATT5_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_46RATT6, VERITA9x_46RATT6_init);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_47RATT7, VERITA9x_47RATT7_init);
+        if (ModelNum == 4490) {
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_60DSDSEL0, VERITA90_60DSDSEL0_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_61DSDD, VERITA90_61DSDD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_62RSVD, VERITA90_62RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_63DMRE, VERITA90_63DMRE_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_64DMC, VERITA90_64DMC_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_65DMR, VERITA90_65DMR_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_66DML, VERITA90_66DML_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_67DDM, VERITA90_67DDM_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_70SYNCE, VERITA90_70SYNCE_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_71RSVD, VERITA90_71RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_72RSVD, VERITA90_72RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_73RSVD, VERITA90_73RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_74RSVD, VERITA90_74RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_75RSVD, VERITA90_75RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_76RSVD, VERITA90_76RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_77RSVD, VERITA90_77RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_80SC0, VERITA90_80SC0_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_81SC1, VERITA90_81SC1_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_82RSVD, VERITA90_82RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_83RSVD, VERITA90_83RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_84RSVD, VERITA90_84RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_85RSVD, VERITA90_85RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_86RSVD, VERITA90_86RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_87RSVD, VERITA90_87RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_90DSDSEL1, VERITA90_90DSDSEL1_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_91DSDF, VERITA90_91DSDF_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_92RSVD, VERITA90_92RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_93RSVD, VERITA90_93RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_94RSVD, VERITA90_94RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_95RSVD, VERITA90_95RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_96RSVD, VERITA90_96RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_97RSVD, VERITA90_97RSVD_init);
+            Initialized[ChipSelect][ChipNum]=true;
+        } else if (ModelNum == 4495) {
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_60DSDDSEL, VERITA95_60DSDDSEL_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_61DSDD0, VERITA95_61DSDD0_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_62DSDD1, VERITA95_62DSDD1_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_63DMRE, VERITA95_63DMRE_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_64DMC, VERITA95_64DMC_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_65DMR, VERITA95_65DMR_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_66DML, VERITA95_66DML_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_67DDM, VERITA95_67DDM_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_70SYNCE, VERITA95_70SYNCE_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_71RSVD, VERITA95_71RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_72RSVD, VERITA95_72RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_73RSVD, VERITA95_73RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_74RSVD, VERITA95_74RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_75RSVD, VERITA95_75RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_76RSVD, VERITA95_76RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL6], VERITA95_77RSVD, VERITA95_77RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_80SC0, VERITA95_80SC0_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_81SC1, VERITA95_81SC1_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_82SC2, VERITA95_82SC2_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_83RSVD, VERITA95_83RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_84RSVD, VERITA95_84RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_85RSVD, VERITA95_85RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_86RSVD, VERITA95_86RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_87RSVD, VERITA95_87RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_90DSDSEL1, VERITA95_90DSDSEL1_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_91DSDF, VERITA95_91DSDF_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_92RSVD, VERITA95_92RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_93RSVD, VERITA95_93RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_94RSVD, VERITA95_94RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_95RSVD, VERITA95_95RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_96RSVD, VERITA95_96RSVD_init);
+            bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_RSVD], VERITA95_97RSVD, VERITA95_97RSVD_init);
+            Initialized[ChipSelect][ChipNum]=true;
+        }
+    }
+    if(!SPI_exec){
+        SPI.begin();
+        SPI.setDataMode(SPI_MODE0);
+        SPI_exec=true;
+    }
+    for (uint8_t i=0;i<REGNUM;i++) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, i);
+        AK449x::queued[ChipSelect][ChipNum][i] = false;
     }
 }
 
@@ -387,31 +397,51 @@ void AK449x::setinit(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum) {
 ////|x|_|_|_|_|_|_|_| Master Clock frequency Setting: auto/manual (2)(3)
 void AK449x::RSTN(uint8_t ChipSelect, uint8_t ChipNum) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_00RSTN, BIT_HIGH);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+    AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_00RSTN, BIT_LOW);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+    AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
 }
 
-void AK449x::DIF(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode) {
+void AK449x::DIF(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_01DIF0, bitRead(OpMode, 0));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_02DIF1, bitRead(OpMode, 1));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_03DIF2, bitRead(OpMode, 2));
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = true;
+    }
 }
 
-void AK449x::ECS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::ECS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_05ECS, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = true;
+    }
 }
 
-void AK449x::EXDF(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::EXDF(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_06EXDF, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = true;
+    }
 }
 
-void AK449x::ACKS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::ACKS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL1], VERITA9x_07ACKS, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL1);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL1] = true;
+    }
 }
 
 ////Register address: 01 (Control 2)
@@ -422,39 +452,71 @@ void AK449x::ACKS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
 ////|_|_|x|_|_|_|_|_| Short Delay/Traditional filter (Minimum/Linear phase)
 ////|_|x|_|_|_|_|_|_| Zero data detect mode: Separate channels or ANDed channels
 ////|x|_|_|_|_|_|_|_| Zero data detect ON/OFF
-void AK449x::SMUTE(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::SMUTE(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_10SMUTE, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = true;
+    }
 }
 
-void AK449x::DEM(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode) {
+void AK449x::DEM(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_11DEM0, bitRead(OpMode, 0));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_12DEM1, bitRead(OpMode, 1));
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = true;
+    }
 }
 
-void AK449x::DFS(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode) {
+void AK449x::DFS(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_13DFS0, bitRead(OpMode, 0));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_14DFS1, bitRead(OpMode, 1));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_51DFS2, bitRead(OpMode, 2));
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = true;
+    }
 }
 
-void AK449x::SD(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode) {
+void AK449x::SD(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_15SD, bitRead(OpMode, 1));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_50SSLOW, bitRead(OpMode, 0));
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = true;
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
+    }
 }
 
-void AK449x::DZFM(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::DZFM(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_16DZFM, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = true;
+    }
 }
 
-void AK449x::DZFE(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::DZFE(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL2], VERITA9x_17DZFE, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL2);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL2] = true;
+    }
 }
 
 ////Register address: 02 (Control 3)
@@ -466,40 +528,70 @@ void AK449x::DZFE(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
 ////|_|_|_|x|_|_|_|_| DSD Data on clock falling/rising edge
 ////|_|x|_|_|_|_|_|_| DSD master clock frequency:512KHz/768KHz
 ////|x|_|_|_|_|_|_|_| PCM/DSD mode
-void AK449x::SELLR(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::SELLR(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_21SELLR, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
+    }
 }
 
-void AK449x::DZFB(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::DZFB(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_22DZFB, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
+    }
 }
 
-void AK449x::MONO(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::MONO(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_23MONO, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
+    }
 }
 
-void AK449x::DCKB(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::DCKB(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_24DCKB, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
+    }
 }
 
-void AK449x::DCKS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::DCKS(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_25DCKS, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
+    }
 }
 
-void AK449x::DP(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::DP(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL3], VERITA9x_27DP, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL3);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL3] = true;
+    }
 }
 
 ////Register address: 03 (Left Channel Attenuation)
 ////7 6 5 4 3 2 1 0
 ////|x|x|x|x|x|x|x|x| Attenuation (1)
-void AK449x::LATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode) {
+void AK449x::LATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_30LATT0, bitRead(OpMode, 0));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_31LATT1, bitRead(OpMode, 1));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_32LATT2, bitRead(OpMode, 2));
@@ -508,13 +600,18 @@ void AK449x::LATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_35LATT5, bitRead(OpMode, 5));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_36LATT6, bitRead(OpMode, 6));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_LATT], VERITA9x_37LATT7, bitRead(OpMode, 7));
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_LATT);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_LATT);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_LATT] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_LATT] = true;
+    }
 }
 
 ////Register address: 04 (Right Channel Attenuation)
 ////7 6 5 4 3 2 1 0
 ////|x|x|x|x|x|x|x|x| Attenuation (1)
-void AK449x::RATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode) {
+void AK449x::RATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_40RATT0, bitRead(OpMode, 0));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_41RATT1, bitRead(OpMode, 1));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_42RATT2, bitRead(OpMode, 2));
@@ -523,7 +620,12 @@ void AK449x::RATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_45RATT5, bitRead(OpMode, 5));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_46RATT6, bitRead(OpMode, 6));
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_RATT], VERITA9x_47RATT7, bitRead(OpMode, 7));
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_RATT);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_RATT);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_RATT] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_RATT] = true;
+    }
 }
 
 ////Register address: 05 (Control 4)
@@ -532,19 +634,34 @@ void AK449x::RATT(uint8_t ChipSelect, uint8_t ChipNum, uint8_t OpMode) {
 ////|_|_|_|_|_|_|x|_| Bit 3 of the manual sampling speed setting (see reg 01)
 ////|_|x|_|_|_|_|_|_| Left channel phase invert ON/OFF
 ////|x|_|_|_|_|_|_|_| Right channel phase invert ON/OFF
-void AK449x::SSLOW(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::SSLOW(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_50SSLOW, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = true;
+    }
 }
 
-void AK449x::INVR(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::INVR(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_56INVR, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = true;
+    }
 }
 
-void AK449x::INVL(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
+void AK449x::INVL(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable, boolean SendNow) {
     bitWrite(reg449x[ChipSelect][ChipNum][VERITA9x_REG_CTRL4], VERITA9x_57INVL, FuncEnable);
-    AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
+    if (SendNow) {
+        AK449x_SPI_Write(ChipSelect, ChipNum, VERITA9x_REG_CTRL4);
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = false;
+    } else if (!SendNow) {
+        AK449x::queued[ChipSelect][ChipNum][VERITA9x_REG_CTRL4] = true;
+    }
 }
 
 ////Register address: 06 (control 5)
@@ -556,105 +673,197 @@ void AK449x::INVL(uint8_t ChipSelect, uint8_t ChipNum, boolean FuncEnable) {
 ////|_|_|x|_|_|_|_|_| Right Channel DSD flag when detecting full scale signal
 ////|_|x|_|_|_|_|_|_| Left Channel DSD flag when detecting full scale signal
 ////|x|_|_|_|_|_|_|_| DSD AutoMute: ON/OFF (4)
-void AK449x::DSDSEL(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode) {
+void AK449x::DSDSEL(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_60DSDSEL0, bitRead(OpMode, 0));
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_90DSDSEL1, bitRead(OpMode, 1));
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL8);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL8);
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL8] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL8] = true;
+        }
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_60DSDDSEL, bitRead(OpMode, 0));
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
+        }
     }
 }
 
-void AK449x::DSDD(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode) {
+void AK449x::DSDD(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_61DSDD, bitRead(OpMode, 0));
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
+        }
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_61DSDD0, bitRead(OpMode, 0));
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_62DSDD1, bitRead(OpMode, 1));
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
+        }
     }
 }
 
-void AK449x::DMRE(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable) {
+void AK449x::DMRE(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_63DMRE, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
+        }
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_63DMRE, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
+        }
     }
 }
 
-void AK449x::DMC(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable) {
+void AK449x::DMC(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_64DMC, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
+        }
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_64DMC, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
+        }
     }
 }
 
-void AK449x::DMR(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable) {
+void AK449x::DMR(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_65DMR, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
+        }
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_65DMR, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
+        }
     }
 }
 
-void AK449x::DML(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable) {
+void AK449x::DML(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_66DML, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
+        }
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_66DML, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
+        }
     }
 }
 
-void AK449x::DDM(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable) {
+void AK449x::DDM(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_67DDM, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL5] = true;
+        }
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_67DDM, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL5);
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL5] = true;
+        }
     }
 }
 
 ////Register address: 07 (Control 6)
 ////7 6 5 4 3 2 1 0
 ////|_|_|_|_|_|_|_|x| Synchronize ON/OFF (1)
-void AK449x::SYNCE(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable) {
+void AK449x::SYNCE(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL5], VERITA90_70SYNCE, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL6);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA90_70SYNCE, FuncEnable);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL6);
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL6] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL6] = true;
+        }
     } else if (ModelNum == 4495) {
-        bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL5], VERITA95_70SYNCE, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL6);
+        bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL6], VERITA95_70SYNCE, FuncEnable);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL6);
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL6] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL6] = true;
+        }
     }
 }
 
 ////Register address: 08 (Control 7)
 ////7 6 5 4 3 2 1 0
 ////|_|_|_|_|_|_|x|x| Sound Quality Control Setting (1)
-void AK449x::SC(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode) {
+void AK449x::SC(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMode, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_80SC0, bitRead(OpMode, 0));
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL7], VERITA90_81SC1, bitRead(OpMode, 1));
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL7);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL7);
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL7] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL7] = true;
+        }
     } else if (ModelNum == 4495) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_80SC0, bitRead(OpMode, 0));
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_81SC1, bitRead(OpMode, 1));
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA95_REG_CTRL7], VERITA95_82SC2, bitRead(OpMode, 2));
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL7);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA95_REG_CTRL7);
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL7] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA95_REG_CTRL7] = true;
+        }
     }
 }
 
@@ -662,18 +871,27 @@ void AK449x::SC(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, uint8_t OpMod
 ////7 6 5 4 3 2 1 0
 ////|_|_|_|_|_|_|_|x| DSD bit 1 of sample speed selection (see also reg 5)
 ////|_|_|_|_|_|_|x|_| DSD filter selection when in DSD direct mode
-void AK449x::DSDF(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable) {
+void AK449x::DSDF(uint8_t ChipSelect, uint8_t ChipNum, int ModelNum, boolean FuncEnable, boolean SendNow) {
     if (ModelNum == 4490) {
         bitWrite(reg449x[ChipSelect][ChipNum][VERITA90_REG_CTRL8], VERITA90_91DSDF, FuncEnable);
-        AK449x::AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL8);
+        if (SendNow) {
+            AK449x_SPI_Write(ChipSelect, ChipNum, VERITA90_REG_CTRL8);
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL8] = false;
+        } else if (!SendNow) {
+            AK449x::queued[ChipSelect][ChipNum][VERITA90_REG_CTRL8] = true;
+        }
     }
 }
 
 //private:
-//uint8_t reg449x[CSELECT_MAX][CHIPNUM_MAX][REGNUM];
-
-#ifdef _SPI_H_INCLUDED
-
+//static boolean AK449x::Initialized[CSELECT_MAX][CHIPNUM_MAX];
+//static boolean AK449x::SPI_exec;
+//static boolean AK449x::queued[CSELECT_MAX][CHIPNUM_MAX][REGNUM];
+//static uint8_t AK449x::reg449x[CSELECT_MAX][CHIPNUM_MAX][REGNUM];
+    boolean AK449x::Initialized[CSELECT_MAX][CHIPNUM_MAX];
+    boolean AK449x::SPI_exec;
+    boolean AK449x::queued[CSELECT_MAX][CHIPNUM_MAX][REGNUM];
+    uint8_t AK449x::reg449x[CSELECT_MAX][CHIPNUM_MAX][REGNUM];
 void AK449x::AK449x_SPI_Write(uint8_t ChipSelect, uint8_t ChipNum, uint8_t RegisterAddress) {
 // AK449x DACs expect the register address in the upper 2 bits of the byte as Chip-Address. So shift the bits left by 6 bits:
     byte ChipNumByte = (byte) ChipNum << 6;
@@ -693,5 +911,4 @@ void AK449x::AK449x_SPI_Write(uint8_t ChipSelect, uint8_t ChipNum, uint8_t Regis
     digitalWrite(ChipSelect, HIGH);
 }
 
-#endif
 //};
